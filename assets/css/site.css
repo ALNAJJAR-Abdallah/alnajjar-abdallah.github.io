@@ -691,3 +691,39 @@ dl.dl { display: grid; gap: 0; }
   .site-header, .site-footer, .toast, .nav-scrim { display: none !important; }
   body { background: #fff; color: #000; }
 }
+
+/* ---------- Phones: shorter pages, same content ---------- */
+.collapsible > summary { list-style: none; cursor: default; }
+.collapsible > summary::-webkit-details-marker { display: none; }
+.collapsible > summary h2, .collapsible > summary h4 { margin: 0; }
+.d-sec.collapsible > summary h2 { margin-bottom: .9rem; }
+.demo > summary h4 { margin-bottom: .6rem; }
+.m-only, .features-first, .more-feat { display: none; }
+.more-feat > summary { list-style: none; }
+.more-feat > summary::-webkit-details-marker { display: none; }
+@media (max-width: 760px) {
+  .features-all { display: none; }
+  .features-first, .more-feat { display: block; }
+  .more-feat > summary { padding: .75rem 0; color: var(--accent-text); font-weight: 600; cursor: pointer; }
+  .m-only { display: inline-flex; }
+  .m-hide, .hide-m { display: none; }
+  .collapsible > summary { cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2.75rem; }
+  .collapsible > summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--text-2); }
+  .collapsible[open] > summary::after { content: "–"; }
+  .d-sec.collapsible { border-top: 1px solid var(--line); padding-top: .25rem; margin-bottom: 1.25rem; }
+  .d-sec.collapsible > summary h2 { margin-bottom: 0; }
+  .d-sec.collapsible[open] > summary h2 { margin-bottom: .9rem; }
+  .d-sec.outlook { padding: 1rem; border: 2px dashed var(--line-strong); border-radius: var(--r-md); }
+  .demo > summary h4 { margin-bottom: 0; }
+  .demo[open] > summary h4 { margin-bottom: .6rem; }
+  .hero-visual { display: none; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
+  .step .org-tile { --th: 2.5rem; }
+  .step p:last-child { font-size: .8125rem; }
+  .facts > div:nth-child(2), .facts > div:nth-child(4) { display: none; }
+  .site-footer nav { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .fiche .org-tile, .fiche .dl > .fiche-org, .fiche .dl > .fiche-type { display: none; }
+  .fiche .dl:not(:has(> div:not(.fiche-org):not(.fiche-type))) { display: none; }
+  .fiche { padding: 1.1rem; gap: .75rem; }
+}

@@ -176,6 +176,24 @@
     });
   });
 
+  /* ---- Collapsible blocks: folded on phones, always open elsewhere ---- */
+  var folds = doc.querySelectorAll('details.collapsible');
+  var phoneMq = window.matchMedia('(max-width: 760px)');
+  function syncFolds() {
+    folds.forEach(function (d) {
+      if (!phoneMq.matches) d.open = true;
+      else if (!d.dataset.touched) d.open = false;
+    });
+  }
+  folds.forEach(function (d) {
+    var sum = d.querySelector('summary');
+    if (sum) sum.addEventListener('click', function (e) {
+      if (!phoneMq.matches) e.preventDefault(); else d.dataset.touched = '1';
+    });
+  });
+  syncFolds();
+  phoneMq.addEventListener ? phoneMq.addEventListener('change', syncFolds) : phoneMq.addListener(syncFolds);
+
   /* ---- Scroll reveal ---- */
   var items = doc.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window) || reduceMotion.matches) {
