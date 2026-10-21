@@ -17,32 +17,6 @@
     });
   }
 
-  /* ---- Theme toggle (initial theme is set by an inline script in <head> to avoid a flash) ---- */
-  var toggle = doc.querySelector('.theme-toggle');
-  function syncThemeUi() {
-    var t = root.getAttribute('data-theme');
-    if (toggle) toggle.setAttribute('aria-label', t === 'dark' ? toggle.dataset.toLight : toggle.dataset.toDark);
-    var m = doc.getElementById('meta-theme');
-    if (m) m.content = t === 'light' ? '#F7F8F2' : '#081529';
-  }
-  syncThemeUi();
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      safe(function () { localStorage.setItem('theme', next); });
-      syncThemeUi();
-    });
-  }
-  // Follow the system when no manual choice has been stored.
-  var mq = window.matchMedia('(prefers-color-scheme: light)');
-  var onScheme = function () {
-    if (safe(function () { return localStorage.getItem('theme'); })) return;
-    root.setAttribute('data-theme', mq.matches ? 'light' : 'dark');
-    syncThemeUi();
-  };
-  mq.addEventListener ? mq.addEventListener('change', onScheme) : mq.addListener(onScheme);
-
   /* ---- Language: remember the explicit choice ---- */
   doc.querySelectorAll('.lang-opt').forEach(function (a) {
     a.addEventListener('click', function () {

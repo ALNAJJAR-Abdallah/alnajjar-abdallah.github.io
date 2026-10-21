@@ -175,9 +175,6 @@ main { display: block; padding-bottom: 1rem; outline: none; min-height: 60vh; }
 .icon-btn { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 0; background: color-mix(in srgb, var(--text) 8%, transparent); cursor: pointer; transition: background-color .25s var(--ease), transform .12s var(--ease); }
 .icon-btn:hover { background: color-mix(in srgb, var(--text) 14%, transparent); }
 .icon-btn:active { transform: scale(.92); transition-duration: 60ms; }
-.theme-toggle .icon { grid-area: 1 / 1; transition: transform .5s var(--spring), opacity .25s var(--ease); }
-:root[data-theme="dark"] .theme-toggle .icon:first-child { transform: rotate(90deg) scale(.4); opacity: 0; }
-:root[data-theme="light"] .theme-toggle .icon:last-child { transform: rotate(-90deg) scale(.4); opacity: 0; }
 .menu-btn { display: none; }
 .menu-btn .m-top, .menu-btn .m-bot { transform-box: fill-box; transform-origin: center; transition: transform .45s var(--spring); }
 .nav-open .menu-btn .m-top { transform: translateY(4px) rotate(45deg); }
